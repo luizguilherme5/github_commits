@@ -2,14 +2,14 @@ class GithubCommitsController < ApplicationController
   
   unloadable
    
-  skip_before_filter :check_if_login_required
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :check_if_login_required
+  skip_before_action :verify_authenticity_token
   
   before_action :verify_signature?
   
   GITHUB_URL = "https://github.com/"
   REDMINE_JOURNALIZED_TYPE = "Issue"
-  REDMINE_ISSUE_NUMBER_PREFIX = "#rm"
+  REDMINE_ISSUE_NUMBER_PREFIX = "#"
 
   def create_comment
     resp_json = nil
