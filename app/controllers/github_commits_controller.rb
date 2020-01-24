@@ -29,8 +29,8 @@ class GithubCommitsController < ApplicationController
         if last_commit.present? && issue.present?
 
           # email = EmailAddress.find_by(address: last_commit[:author][:email])
-          email = 'github@medipreco.com.br'
-          user = email.present? ? email.user : User.where(email: true).last
+          email = EmailAddress.find_by(address: 'github@medipreco.com.br')
+          user = email.present? ? email.user : User.where(admin: true).last
 
           puts email
           puts user
